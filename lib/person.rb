@@ -1,7 +1,7 @@
 # your code goes here
 class Person
-    attr_accessor :bank_account
-    attr_reader :name, :happiness, :hygiene
+    attr_accessor :bank_account,:happiness,:hygiene
+    attr_reader :name 
     
    def initialize(name)
        @name = name
@@ -9,33 +9,36 @@ class Person
        @hygiene = 8
        @happiness = 8
    end
-   def happiness=(happy)
+   def happiness=(number)
        #are they happy?
-    #   @happiness= happy
-       if @happiness.is_a?(Integer) #looks for happiness level
+        @happiness= number
+      #if @happiness.is_a?(Integer) #looks for happiness level
             if @happiness > 10
-            @happiness = 10
+                @happiness = 10
             elsif @happiness < 0
-            @happiness = 0
+                @happiness = 0
             end
-        else
-            @happiness = happiness
-       end
+        #else
+            #    @happiness = happiness
+      #end
    end  
-   def hygiene= (sweet)
+   
+   def hygiene= (num) 
        #is there hygiene level greater than 7 
        #@hygiene = sweet
-       if @hygiene.is_a?(Integer) #looks for hygiene level
+       @hygiene= num
+       #if @hygiene.is_a?(Integer) #looks for hygiene level
             if @hygiene > 10
-            @hygiene=10 #hygiene cannot be greater than 10
+            @hygiene= 10 #hygiene cannot be greater than 10
             elsif @hygiene < 0
             @hygiene= 0 #hygiene cannot be less than 10
             end
-        else
-            @hygiene = hygiene
-       end
-       
+       # else
+        #    @hygiene = hygiene
+       #end
+     
    end
+   
    def clean?
        if @hygiene > 7
            true
@@ -45,9 +48,9 @@ class Person
    end
    def happy?
        if @happiness > 7
-           true
+            true
        else
-           false
+            false
        end
    end
   def get_paid(money)
@@ -56,7 +59,7 @@ class Person
   end
   def take_bath
       self.hygiene += 4 #adding 4 to hygiene
-      retun "♪ Rub-a-dub just relaxing in the tub ♫"
+      return "♪ Rub-a-dub just relaxing in the tub ♫"
   end
   def work_out
       self.happiness += 2
@@ -64,8 +67,8 @@ class Person
       return "♪ another one bites the dust ♫"
   end
   def call_friend(friend)
-      friend.happiness += 3
-      self.happiness += 3
+     self.happiness += 3
+     friend.happiness += 3
       "Hi #{friend.name}! It's #{self.name}. How are you?"
   end
   def start_conversation(other_person, topic)
